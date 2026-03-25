@@ -1,12 +1,19 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
+export const metadata = {
+  title: "Services | Madden & Mangan Construction Ltd",
+  description:
+    "Professional building contractors, roofers & slaters providing construction and restoration services across Munster.",
+};
+
 const projects = [
   "Muckross Glass House, Killarney, Co. Kerry",
   "Muckross Gate Lodge, Killarney, Co. Kerry",
   "Derrycunnihy Church, Killarney, Co. Kerry",
   "Cottage 22, Muckross, Killarney, Co. Kerry",
 ];
+
 
 export default function ProjectsPage() {
   return (

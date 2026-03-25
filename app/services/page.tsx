@@ -1,6 +1,12 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
+export const metadata = {
+  title: "Services | Madden & Mangan Construction Ltd",
+  description:
+    "Professional building contractors, roofers & slaters providing construction and restoration services across Munster.",
+};
+
 const services = [
   {
     title: "Building Contractors",

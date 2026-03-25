@@ -3,6 +3,12 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 
+export const metadata = {
+  title: "Madden & Mangan Construction Ltd | Building Contractors Munster",
+  description:
+    "Madden & Mangan Construction Ltd are experienced building contractors, roofers and slaters serving Munster from Castleisland, Co. Kerry.",
+};
+
 const services = [
   "Building Contractors",
   "Roofing & Slating",
