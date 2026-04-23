@@ -1,38 +1,22 @@
+import Image from "next/image";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { services } from "@/lib/services";
 
 export const metadata = {
-  title: "Services | Madden & Mangan Construction Ltd",
+  title:
+    "Building, Roofing & Conservation Services | Madden & Mangan Construction Kerry",
   description:
-    "Professional building contractors, roofers & slaters providing construction and restoration services across Munster.",
+    "Professional building contractors, roofers, slaters and conservation specialists serving Kerry and Munster. Contact Madden & Mangan for a quote.",
+  alternates: {
+    canonical: "/services",
+  },
 };
-
-const services = [
-  {
-    title: "Building Contractors",
-    description:
-      "Professional building services delivered with care, experience, and attention to detail across residential and specialist projects.",
-  },
-  {
-    title: "Roofers & Slaters",
-    description:
-      "Reliable roofing and slating work completed to a high standard using proven techniques and quality workmanship.",
-  },
-  {
-    title: "Restoration & Conservation Work",
-    description:
-      "Extensive experience working alongside RIAI Conservation Accredited architects on heritage and conservation-focused projects.",
-  },
-  {
-    title: "General Building Work",
-    description:
-      "Dependable construction services for a wide range of building needs across Munster.",
-  },
-];
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-white text-stone-900">
+    <main id="main-content" className="min-h-screen bg-white text-stone-900">
       <Navbar />
 
       <section className="bg-stone-900 text-white">
@@ -53,18 +37,67 @@ export default function ServicesPage() {
 
       <section className="bg-stone-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {services.map((service) => (
-              <div
-                key={service.title}
-                className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm"
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group overflow-hidden rounded-xl border border-stone-200 bg-white shadow-md transition hover:shadow-lg"
               >
-                <h2 className="text-xl font-semibold">{service.title}</h2>
-                <p className="mt-3 leading-7 text-stone-600">
-                  {service.description}
-                </p>
-              </div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h2 className="text-xl font-semibold group-hover:text-red-800">
+                    {service.shortTitle}
+                  </h2>
+                  <p className="mt-2 text-sm font-medium text-stone-500">
+                    {service.tagline}
+                  </p>
+                  <p className="mt-4 leading-7 text-stone-600">
+                    {service.summary}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-red-800">
+                    Read more <span aria-hidden>&rarr;</span>
+                  </span>
+                </div>
+              </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-red-800">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-bold text-white md:text-4xl">
+                Looking for something specific?
+              </h2>
+              <p className="mt-3 text-lg text-red-100">
+                Get in touch and we&apos;ll talk through the project with you.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="rounded-md bg-white px-6 py-3 text-center text-sm font-semibold text-red-800 transition hover:bg-stone-100"
+              >
+                Contact us
+              </Link>
+              <a
+                href="tel:+353872787885"
+                className="rounded-md border border-white px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Call 087 278 7885
+              </a>
+            </div>
           </div>
         </div>
       </section>

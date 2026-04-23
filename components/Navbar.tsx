@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -35,39 +35,68 @@ export default function Navbar() {
           <Link href="/projects" className="text-sm font-medium text-stone-700 hover:text-stone-900">
             Projects
           </Link>
+          <Link href="/about" className="text-sm font-medium text-stone-700 hover:text-stone-900">
+            About
+          </Link>
+          <Link href="/careers" className="text-sm font-medium text-stone-700 hover:text-stone-900">
+            Careers
+          </Link>
+          <Link href="/faq" className="text-sm font-medium text-stone-700 hover:text-stone-900">
+            FAQ
+          </Link>
           <Link href="/contact" className="text-sm font-medium text-stone-700 hover:text-stone-900">
             Contact
           </Link>
         </nav>
 
-        {/* Desktop CTA */}
-        <Link
-          href="/contact"
-          className="hidden rounded-md bg-red-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-900 md:block"
-        >
-          Get a Quote
-        </Link>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-stone-900"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="h-6 w-6"
+        {/* Desktop CTAs */}
+        <div className="hidden items-center gap-3 md:flex">
+          <a
+            href="tel:+353872787885"
+            aria-label="Call Larry on 087 278 7885"
+            className="rounded-md border border-stone-300 px-3 py-2 text-sm font-semibold text-stone-800 transition hover:border-red-800 hover:text-red-800"
           >
-            {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            087 278 7885
+          </a>
+          <Link
+            href="/contact"
+            className="rounded-md bg-red-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-900"
+          >
+            Get a Quote
+          </Link>
+        </div>
+
+        {/* Mobile click-to-call + menu button */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="tel:+353872787885"
+            aria-label="Call Larry on 087 278 7885"
+            className="rounded-md bg-red-800 px-3 py-2 text-xs font-semibold text-white transition hover:bg-red-900"
+          >
+            Call
+          </a>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-stone-900"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -88,6 +117,30 @@ export default function Navbar() {
               className="text-base font-medium text-stone-800"
             >
               Projects
+            </Link>
+
+            <Link
+              href="/about"
+              onClick={() => setIsOpen(false)}
+              className="text-base font-medium text-stone-800"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/careers"
+              onClick={() => setIsOpen(false)}
+              className="text-base font-medium text-stone-800"
+            >
+              Careers
+            </Link>
+
+            <Link
+              href="/faq"
+              onClick={() => setIsOpen(false)}
+              className="text-base font-medium text-stone-800"
+            >
+              FAQ
             </Link>
 
             <Link

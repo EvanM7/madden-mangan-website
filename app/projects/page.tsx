@@ -1,23 +1,19 @@
+import Image from "next/image";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { projects } from "@/lib/projects";
 
 export const metadata = {
-  title: "Services | Madden & Mangan Construction Ltd",
+  title:
+    "Construction & Restoration Projects | Madden & Mangan Construction Kerry",
   description:
-    "Professional building contractors, roofers & slaters providing construction and restoration services across Munster.",
+    "View completed construction, roofing and conservation projects by Madden & Mangan Construction Ltd, including heritage restoration work in Killarney, Co. Kerry.",
 };
-
-const projects = [
-  "Muckross Glass House, Killarney, Co. Kerry",
-  "Muckross Gate Lodge, Killarney, Co. Kerry",
-  "Derrycunnihy Church, Killarney, Co. Kerry",
-  "Cottage 22, Muckross, Killarney, Co. Kerry",
-];
-
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-white text-stone-900">
+    <main id="main-content" className="min-h-screen bg-white text-stone-900">
       <Navbar />
 
       <section className="bg-stone-900 text-white">
@@ -40,16 +36,36 @@ export default function ProjectsPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
           <div className="grid gap-6 md:grid-cols-2">
             {projects.map((project) => (
-              <div
-                key={project}
-                className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm"
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className="group overflow-hidden rounded-xl border border-stone-200 bg-white shadow-md transition hover:shadow-lg"
               >
-                <h2 className="text-xl font-semibold">{project}</h2>
-                <p className="mt-3 leading-7 text-stone-600">
-                  A completed project showcasing the company’s experience in
-                  quality construction, restoration, and specialist work.
-                </p>
-              </div>
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-stone-100">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h2 className="text-xl font-semibold group-hover:text-red-800">
+                    {project.title}
+                  </h2>
+                  <p className="mt-1 text-sm uppercase tracking-wide text-stone-500">
+                    {project.location}
+                  </p>
+                  <p className="mt-3 leading-7 text-stone-600">
+                    {project.shortDescription}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-red-800 group-hover:underline">
+                    View project details
+                    <span aria-hidden>&rarr;</span>
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
