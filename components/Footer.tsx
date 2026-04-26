@@ -81,6 +81,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/areas" className="hover:text-white">
+                Areas we cover
+              </Link>
+            </li>
+            <li>
               <Link href="/about" className="hover:text-white">
                 About
               </Link>
@@ -105,12 +110,23 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-stone-800">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-stone-400 md:flex-row md:items-center md:justify-between md:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-6 text-xs text-stone-400 md:flex-row md:items-center md:justify-between md:px-10">
           <p>
             &copy; {currentYear} Madden &amp; Mangan Construction Ltd. All
             rights reserved.
           </p>
-          <p>Castleisland, Co. Kerry &middot; Serving Munster</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link href="/privacy" className="hover:text-white">
+              Privacy
+            </Link>
+            <Link href="/cookies" className="hover:text-white">
+              Cookies
+            </Link>
+            <span aria-hidden className="hidden md:inline">
+              &middot;
+            </span>
+            <span>Castleisland, Co. Kerry &middot; Serving Munster</span>
+          </nav>
         </div>
       </div>
     </footer>

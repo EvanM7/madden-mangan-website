@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { SITE_URL, buildBreadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const metadata = {
   title: "Careers & Apprenticeships | Madden & Mangan Construction Kerry",
@@ -66,8 +67,17 @@ const lookingFor = [
 ];
 
 export default function CareersPage() {
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Home", url: SITE_URL },
+    { name: "Careers", url: `${SITE_URL}/careers` },
+  ]);
+
   return (
     <main id="main-content" className="min-h-screen bg-white text-stone-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumb) }}
+      />
       <Navbar />
 
       <section className="bg-stone-900 text-white">

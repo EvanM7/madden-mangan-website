@@ -9,10 +9,15 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -21,4 +26,13 @@ body {
 
 a {
   text-decoration: none;
+}
+
+/* Safety-net focus-visible style for any interactive element that hasn't
+   set its own focus styling. Tailwind's focus-visible: utilities still take
+   precedence where they're applied. */
+:focus-visible {
+  outline: 2px solid #b91c1c; /* red-700 */
+  outline-offset: 2px;
+  border-radius: 4px;
 }

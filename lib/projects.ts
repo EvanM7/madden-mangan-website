@@ -1,3 +1,5 @@
+export type GalleryImage = { src: string; alt: string };
+
 export type Project = {
   slug: string;
   title: string;
@@ -8,6 +10,7 @@ export type Project = {
   image: string;
   imageAlt: string;
   details: { label: string; value: string }[];
+  gallery: GalleryImage[];
 };
 
 export const projects: Project[] = [
@@ -32,6 +35,24 @@ export const projects: Project[] = [
       { label: "Type of work", value: "Heritage restoration & conservation" },
       { label: "Setting", value: "Killarney National Park" },
     ],
+    gallery: [
+      {
+        src: "https://picsum.photos/seed/muckross-glass-house-1/1600/1000",
+        alt: "Glass house exterior showing restored Victorian ironwork and glazing",
+      },
+      {
+        src: "https://picsum.photos/seed/muckross-glass-house-2/1600/1000",
+        alt: "Interior of the glass house after conservation work",
+      },
+      {
+        src: "https://picsum.photos/seed/muckross-glass-house-3/1600/1000",
+        alt: "Close-up detail of repaired stonework and paint finishes",
+      },
+      {
+        src: "https://picsum.photos/seed/muckross-glass-house-4/1600/1000",
+        alt: "View of the glass house within the Muckross Estate grounds",
+      },
+    ],
   },
   {
     slug: "muckross-gate-lodge",
@@ -54,6 +75,24 @@ export const projects: Project[] = [
       { label: "Status", value: "Protected structure" },
       { label: "Type of work", value: "Conservation restoration" },
     ],
+    gallery: [
+      {
+        src: "https://picsum.photos/seed/muckross-gate-lodge-1/1600/1000",
+        alt: "Restored stone exterior of the Muckross Gate Lodge",
+      },
+      {
+        src: "https://picsum.photos/seed/muckross-gate-lodge-2/1600/1000",
+        alt: "Traditional slate roof detail on the gate lodge",
+      },
+      {
+        src: "https://picsum.photos/seed/muckross-gate-lodge-3/1600/1000",
+        alt: "Gate lodge approach with original stone walls",
+      },
+      {
+        src: "https://picsum.photos/seed/muckross-gate-lodge-4/1600/1000",
+        alt: "Completed restoration of joinery and finishes",
+      },
+    ],
   },
   {
     slug: "derrycunnihy-church",
@@ -69,14 +108,31 @@ export const projects: Project[] = [
       "Projects like Derrycunnihy are a reminder of the importance of proper conservation work — protecting the buildings that form part of the history and landscape of Kerry and keeping them standing for the people who come to see them.",
     ],
     image: "https://picsum.photos/seed/derrycunnihy-church/1600/1000",
-    imageAlt:
-      "Historic stone church in Killarney National Park, Co. Kerry",
+    imageAlt: "Historic stone church in Killarney National Park, Co. Kerry",
     details: [
       { label: "Location", value: "Killarney National Park, Co. Kerry" },
       { label: "Type of work", value: "Heritage church restoration" },
       {
         label: "Approach",
         value: "Traditional methods & conservation techniques",
+      },
+    ],
+    gallery: [
+      {
+        src: "https://picsum.photos/seed/derrycunnihy-church-1/1600/1000",
+        alt: "Exterior of Derrycunnihy Church after conservation work",
+      },
+      {
+        src: "https://picsum.photos/seed/derrycunnihy-church-2/1600/1000",
+        alt: "Restored stone walls and window detailing",
+      },
+      {
+        src: "https://picsum.photos/seed/derrycunnihy-church-3/1600/1000",
+        alt: "Slate roof and chimney detail",
+      },
+      {
+        src: "https://picsum.photos/seed/derrycunnihy-church-4/1600/1000",
+        alt: "Church setting within Killarney National Park",
       },
     ],
   },
@@ -99,6 +155,24 @@ export const projects: Project[] = [
       { label: "Location", value: "Muckross, Killarney, Co. Kerry" },
       { label: "Type of work", value: "Traditional cottage restoration" },
       { label: "Setting", value: "Heritage landscape" },
+    ],
+    gallery: [
+      {
+        src: "https://picsum.photos/seed/cottage-22-muckross-1/1600/1000",
+        alt: "Restored stone cottage exterior at Muckross",
+      },
+      {
+        src: "https://picsum.photos/seed/cottage-22-muckross-2/1600/1000",
+        alt: "Traditional timber windows and lime-washed walls",
+      },
+      {
+        src: "https://picsum.photos/seed/cottage-22-muckross-3/1600/1000",
+        alt: "Slate roofing and chimney detailing",
+      },
+      {
+        src: "https://picsum.photos/seed/cottage-22-muckross-4/1600/1000",
+        alt: "Cottage set within the Muckross heritage landscape",
+      },
     ],
   },
 ];

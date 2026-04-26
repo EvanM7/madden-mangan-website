@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { SITE_URL, buildBreadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const metadata = {
   title:
@@ -68,13 +69,22 @@ const faqJsonLd = {
 };
 
 export default function FaqPage() {
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Home", url: SITE_URL },
+    { name: "FAQ", url: `${SITE_URL}/faq` },
+  ]);
+
   return (
-    <main className="min-h-screen bg-white text-stone-900">
+    <main id="main-content" className="min-h-screen bg-white text-stone-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumb) }}
       />
 
       <Navbar />

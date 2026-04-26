@@ -37,14 +37,14 @@ export default function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className="rounded-md bg-red-800 px-6 py-3 text-center font-semibold text-white transition hover:bg-red-900"
+              className="rounded-md bg-red-800 px-6 py-3 text-center font-semibold text-white transition hover:bg-red-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-stone-900"
             >
               Request a Quote
             </Link>
 
             <Link
               href="/projects"
-              className="rounded-md border border-white/30 bg-white/5 px-6 py-3 text-center font-semibold text-white transition hover:bg-white/15"
+              className="rounded-md border border-white/30 bg-white/5 px-6 py-3 text-center font-semibold text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-stone-900"
             >
               View Our Work
             </Link>

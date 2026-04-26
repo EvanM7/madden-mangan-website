@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ProjectGallery from "@/components/ProjectGallery";
 import { getProjectBySlug, projects } from "@/lib/projects";
 
 type PageProps = {
@@ -76,6 +77,22 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     ],
   };
 
+  const galleryJsonLd = project.gallery.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        name: `${project.title} — project gallery`,
+        about: project.title,
+        image: [project.image, ...project.gallery.map((g) => g.src)].map(
+          (url) => ({
+            "@type": "ImageObject",
+            contentUrl: url,
+            url,
+          })
+        ),
+      }
+    : null;
+
   return (
     <main id="main-content" className="min-h-screen bg-white text-stone-900">
       <script
@@ -84,6 +101,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
         }}
       />
+      {galleryJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(galleryJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <Navbar />
 
       <section className="relative bg-stone-900 text-white">
@@ -160,6 +185,29 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </aside>
         </div>
       </section>
+
+      {project.gallery.length > 0 && (
+        <section className="bg-white">
+          <div className="mx-auto max-w-6xl px-6 pb-20 md:px-10">
+            <div className="border-t border-stone-200 pt-16">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-700">
+                Gallery
+              </p>
+              <h2 className="mt-3 text-2xl font-bold md:text-3xl">
+                Images from the project
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm text-stone-600">
+                Click any image to enlarge. Use the arrow keys to move between
+                images, or press Escape to close.
+              </p>
+
+              <div className="mt-8">
+                <ProjectGallery images={project.gallery} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-stone-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">

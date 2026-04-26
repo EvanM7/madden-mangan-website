@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { SITE_URL, buildBreadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const metadata = {
   title:
@@ -60,8 +61,17 @@ const milestones = [
 ];
 
 export default function AboutPage() {
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Home", url: SITE_URL },
+    { name: "About", url: `${SITE_URL}/about` },
+  ]);
+
   return (
     <main id="main-content" className="min-h-screen bg-white text-stone-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumb) }}
+      />
       <Navbar />
 
       <section className="bg-stone-900 text-white">

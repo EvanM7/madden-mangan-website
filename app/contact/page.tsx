@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { SITE_URL, buildBreadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const metadata = {
   title: "Contact Madden & Mangan Construction | Kerry Building Contractors",
@@ -8,8 +9,17 @@ export const metadata = {
 };
 
 export default function ContactPage() {
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Home", url: SITE_URL },
+    { name: "Contact", url: `${SITE_URL}/contact` },
+  ]);
+
   return (
     <main id="main-content" className="min-h-screen bg-white text-stone-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumb) }}
+      />
       <Navbar />
 
       <section className="bg-stone-900 text-white">
